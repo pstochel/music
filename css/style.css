@@ -195,6 +195,14 @@ h6 {
     transform: translateX(-50%);
 }
 
+.audio-controls {
+	display: none;
+	position: fixed;
+	bottom: 0;
+	left: 50%;
+    transform: translateX(-50%);
+}
+
 
 #canvas {
   left: 0;
