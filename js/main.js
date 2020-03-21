@@ -89,7 +89,6 @@ volumeBar.addEventListener("change", function() {
 
 function playAudio(audioName) {
 	audio.setAttribute("src", './sound/' + audioName + '.mp3')
-	audio.crossOrigin = "anonymous";
 	audio.load();
     audio.play();
 
@@ -122,7 +121,7 @@ function playAudio(audioName) {
 
     function renderFrame() {
       requestAnimationFrame(renderFrame);
-
+		WIDTH = canvas.width;
       x = 0;
 
       analyser.getByteFrequencyData(dataArray);
@@ -131,7 +130,7 @@ function playAudio(audioName) {
       ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
       for (var i = 0; i < bufferLength; i++) {
-        barHeight = dataArray[i];
+        barHeight = (HEIGHT/255) * dataArray[i];
         
         var r = barHeight + (25 * (i/bufferLength));
         var g = 250 * (i/bufferLength);
