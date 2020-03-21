@@ -13,6 +13,9 @@ var volumeBar = document.getElementById("volume-bar");
 
 // Audio
  var audio = document.getElementById("audio");
+ var volumeBarAudio = document.getElementById("volume-bar-audio");
+var seekBarAudio = document.getElementById("seek-bar-audio");
+
 
 // Play the video
 function playVideo(videoName) {
@@ -86,10 +89,13 @@ volumeBar.addEventListener("change", function() {
 
 // -------------------------------------- AUDIO
 
-
 function playAudio(audioName) {
-	audio.setAttribute("src", './sound/' + audioName + '.mp3')
-	audio.load();
+	if (audio.getAttribute('src') === "") {
+		audio.setAttribute("src", './sound/' + audioName + '.mp3')
+		audio.load();
+		document.getElementById("a-controls").style.display = "block";
+	}
+	
     audio.play();
 
     var context = new AudioContext(window.AudioContext || window.webkitAudioContext);
@@ -99,8 +105,6 @@ function playAudio(audioName) {
     analyser.connect(context.destination);
 
     var canvas = document.getElementById("canvas");
-    // canvas.width = window.innerWidth;
-    // canvas.height = window.innerHeight;
     var ctx = canvas.getContext("2d");
 
     
@@ -148,6 +152,54 @@ function playAudio(audioName) {
 
 }
 
+
+function pauseAudio(){
+	audio.pause();
+
+}
+
+function stopAudio() {
+	audio.pause();
+	audio.setAttribute("src", "");
+	audio.load();
+	document.getElementById("a-controls").style.display = "none";
+}
+
+function muteAudio() {
+	muteButton = document.getElementById("muteAudio");
+	if (audio.muted == false) {
+    	audio.muted = true;
+    	muteButton.innerHTML = "Unmute";
+
+  	} else {
+    	audio.muted = false;
+    	muteButton.innerHTML = "Mute";
+
+  }
+}
+
+volumeBarAudio.addEventListener("change", function() {
+  // Update the video volume
+	audio.volume = volumeBarAudio.value;
+});
+
+
+seekBarAudio.addEventListener("change", function() {
+  // Calculate the new time
+	var time = audio.duration * (seekBarAudio.value / 100);
+
+  // Update the video time
+ 	audio.currentTime = time;
+});
+
+// Update the seek bar as the video plays
+audio.addEventListener("timeupdate", function() {
+  // Calculate the slider value
+  	var value = (100 / audio.duration) * audio.currentTime;
+
+  // Update the slider value
+  	seekBarAudio.value = value;
+});
 
 
 // --------------------------------------
