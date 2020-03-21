@@ -1,0 +1,203 @@
+* {
+	margin:0;
+	padding:0;
+  	box-sizing: border-box;
+}
+h1{
+     margin: 0;
+  }
+
+body{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 25px;
+	color: #FFFFFF;
+	line-height: 1.5;
+	padding:0;
+	margin: 0;
+	background-color: #000000;
+	
+}
+
+
+/*change language*/
+body.en :lang(PL) {
+  display: none;
+}
+
+body.PL :lang(en) {
+  display: none;
+}
+
+
+nav {
+	margin-left: 70px;
+	margin-right: 70px;
+	padding-top: 70px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+nav li {
+  float: left;
+}
+
+nav .header_up li a {
+  display: block;
+  outline:none;
+  color: white;
+  text-align: center;
+  margin: 14px 16px;
+  text-decoration: none;
+}
+
+nav .work_filters {
+	margin-left: 10px;
+}
+
+nav .work_filters li a {
+  display: block;
+  outline:none;
+  color: white;
+  text-align: center;
+  margin: 4px 6px;
+  text-decoration: none;
+}
+
+nav .header_up, .header_bottom {
+	display: -ms-flexbox; /* IE10 */
+    display: flex;
+}
+
+nav .header_lang, .player {
+	margin-left: auto;
+}
+
+/* Change the link color to #111 (black) on hover */
+nav li a:hover {
+  border-bottom: 1px solid #bbb;
+}
+
+.active {
+  border-bottom: 1px solid #bbb;
+}
+
+#work_pieces {
+	margin: 80px;
+}
+
+#work_pieces .row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+#work_pieces .column {
+  -ms-flex: 20%; /* IE10 */
+  flex: 20%;
+  max-width: 20%;
+  padding: 20px 20px;
+}
+
+#work_pieces .column iframe {
+  margin-top: 8px;
+  padding: 5px;
+  vertical-align: middle;
+  width: 100%;
+  border: none;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+#work_pieces  .column {
+    -ms-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+#work_pieces  .column {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+.work_piece {
+	text-align: center;
+	display:none;
+}
+
+.show {
+  display: block;
+}
+
+.work_piece h4, h5, h6 {
+	font-weight: normal;
+	margin: 0;
+}
+
+h6 {
+	color:#B6B6B6;
+}
+
+.work_piece:hover h4 span{
+ 	/*border-bottom: 2px solid #bbb;*/
+ 	background-color: white;
+	color: black;	
+	animation: blinker 0.1s ease 2;
+}
+
+.work_piece:hover {
+	cursor:  pointer;
+}
+
+@keyframes blinker {  
+  90% { opacity: 0.5; }
+}
+
+.postcard {
+	margin-bottom: 15px;
+}
+
+#info {
+	margin: 80px;
+}
+
+
+#bio {
+	margin: 80px;
+}
+
+.audio_controls {
+	width: 80px;
+}
+
+/* Style the tab content */
+.tabContent {
+  display: none;
+}
+
+
+.video-controls {
+	display: none;
+	position: fixed;
+	bottom: 0;
+	left: 50%;
+    transform: translateX(-50%);
+}
+
+
+#canvas {
+  left: 0;
+  top: 0;
+
+}
