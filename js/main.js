@@ -132,9 +132,9 @@ function playAudio(audioName) {
       for (var i = 0; i < bufferLength; i++) {
         barHeight = (HEIGHT/255) * dataArray[i];
         
-        var r = barHeight + (25 * (i/bufferLength));
-        var g = 250 * (i/bufferLength);
-        var b = 50;
+        var r = 255 - (100* barHeight/150);
+        var g = 255 - (100* barHeight/150);
+        var b = 255 - (100* barHeight/150);
 
         ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
         ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
