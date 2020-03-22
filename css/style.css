@@ -191,16 +191,20 @@ h6 {
 	display: none;
 	position: fixed;
 	bottom: 0;
-	left: 50%;
-    transform: translateX(-50%);
+    width: 100%;
+	text-align: center;
+	background: black;
+
 }
+
 
 .audio-controls {
 	display: none;
 	position: fixed;
 	bottom: 0;
-	left: 50%;
-    transform: translateX(-50%);
+    width: 100%;
+	text-align: center;
+	background: black;
 }
 
 
@@ -208,4 +212,42 @@ h6 {
   left: 0;
   top: 0;
   width: 100%;
+}
+
+/*AUDIO CONTROL BUTTONS*/
+.button-play {
+	height: 22px;
+
+	border-color: #000 #000 #000 transparent;
+	transition: 100ms all ease;
+	will-change: border-width;
+	border-style: solid;
+	border-width: 11px 0 11px 20px;
+
+}
+
+.paused{
+	width: 0;
+	border-color: transparent transparent transparent white;
+    background-color: #000;
+	border-style: double;
+	border-width: 0px 0 0px 15px;
+}
+
+
+.button-stop {    
+    width: 0;
+    height: 20px;
+    
+    cursor: pointer;
+
+    border-color: transparent transparent transparent white;
+    background-color: #000;
+    border-width: 0px 0 0px 20px;
+    vertical-align: middle;
+}
+
+.control {
+	vertical-align: middle;
+	cursor: pointer;
 }

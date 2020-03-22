@@ -5,6 +5,7 @@ var video = document.getElementById("myVideo");
 var playButton = document.getElementById("play-pause");
 var muteButton = document.getElementById("mute");
 var fullScreenButton = document.getElementById("full-screen");
+var playVideoBtn = document.getElementById("play-video");
 
 // Sliders
 var seekBar = document.getElementById("seek-bar");
@@ -12,18 +13,27 @@ var volumeBar = document.getElementById("volume-bar");
 
 
 // Audio
- var audio = document.getElementById("audio");
- var volumeBarAudio = document.getElementById("volume-bar-audio");
+var audio = document.getElementById("audio");
+var volumeBarAudio = document.getElementById("volume-bar-audio");
 var seekBarAudio = document.getElementById("seek-bar-audio");
+var playAudioBtn = document.getElementById("play-audio");
 
 
 // Play the video
 function playVideo(videoName) {
+	document.getElementById("a-controls").style.display = "none";
+	stopAudio();
+
 	if (video.getAttribute('src') === "") {
 		video.setAttribute("src", './video/' + videoName + '.mp4')
 		video.load();
 		document.getElementById("v-controls").style.display = "block";
+		playVideoBtn.classList.add("paused");
 
+	}
+	else if (playVideoBtn.classList.contains('paused') && !videoName) {
+		video.pause();
+		return
 	}
 	video.play();
 }
@@ -41,17 +51,17 @@ function stopVideo() {
 	document.getElementById("v-controls").style.display = "none";
 }
 
-muteButton.addEventListener("click", function() {
-  if (video.muted == false) {
-    video.muted = true;
-    muteButton.innerHTML = "Unmute";
+// muteButton.addEventListener("click", function() {
+//   if (video.muted == false) {
+//     video.muted = true;
+//     muteButton.innerHTML = "Unmute";
 
-  } else {
-    video.muted = false;
-    muteButton.innerHTML = "Mute";
+//   } else {
+//     video.muted = false;
+//     muteButton.innerHTML = "Mute";
 
-  }
-});
+//   }
+// });
 
 fullScreenButton.addEventListener("click", function() {
   if (video.requestFullscreen) {
@@ -90,10 +100,18 @@ volumeBar.addEventListener("change", function() {
 // -------------------------------------- AUDIO
 
 function playAudio(audioName) {
+	document.getElementById("v-controls").style.display = "none";
+	stopVideo();
+
 	if (audio.getAttribute('src') === "") {
 		audio.setAttribute("src", './sound/' + audioName + '.mp3')
 		audio.load();
 		document.getElementById("a-controls").style.display = "block";
+		playAudioBtn.classList.add("paused");
+	}
+	else if (playAudioBtn.classList.contains('paused') && !audioName) {
+		audio.pause();
+		return
 	}
 	
     audio.play();
@@ -165,17 +183,36 @@ function stopAudio() {
 	document.getElementById("a-controls").style.display = "none";
 }
 
-function muteAudio() {
-	muteButton = document.getElementById("muteAudio");
+function changeMute(ismute) {
+	mutedBtns = document.getElementsByClassName("button-mute");
+	unmutedBtns = document.getElementsByClassName("button-unmute");
+
+	for (var i =0; i< mutedBtns.length; i++){
+		mutedBtns[i].style.display = ismute ? "inline":  "none";
+	}
+
+	for (var i =0; i< unmutedBtns.length; i++){
+		unmutedBtns[i].style.display = ismute ? "none" : "inline";
+	}
+}
+
+function mute(ismute) {
 	if (audio.muted == false) {
-    	audio.muted = true;
-    	muteButton.innerHTML = "Unmute";
+		audio.muted = true;
 
-  	} else {
-    	audio.muted = false;
-    	muteButton.innerHTML = "Mute";
 
-  }
+	}
+	else if (audio.muted == true) {
+		audio.muted = false;
+	} 
+	if (video.muted == false) {
+		video.muted = true;
+
+	} 
+	else if (video.muted == true) {
+		video.muted = false;
+	}
+	changeMute(ismute)
 }
 
 volumeBarAudio.addEventListener("change", function() {
@@ -200,6 +237,17 @@ audio.addEventListener("timeupdate", function() {
   // Update the slider value
   	seekBarAudio.value = value;
 });
+
+playAudioBtn.addEventListener("click", function() {
+	playAudioBtn.classList.toggle("paused");
+	return false;
+});
+
+playVideoBtn.addEventListener("click", function() {
+	playVideoBtn.classList.toggle("paused");
+	return false;
+});
+
 
 
 // --------------------------------------
@@ -280,6 +328,13 @@ function openTab(evt, tabName) {
 	}
 	document.getElementById(tabName).style.display = "block";
 	evt.currentTarget.className += " active";
+
+	filters = document.getElementsByClassName("work_filters");
+	for (i = 0; i < filters.length; i++) {
+		filters[i].style.display = tabName === "work_pieces" ? "block" : "none";
+	}
+	
+
 }
 
 // INIT
@@ -292,3 +347,8 @@ document.body.className='en'
 
 // Show pieces of work
 document.getElementById('work_pieces').style.display = "block";
+
+var unmutedBtns = document.getElementsByClassName("button-mute");
+for (var i =0; i< unmutedBtns.length; i++){
+	unmutedBtns[i].style.display = "none";
+}
