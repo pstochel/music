@@ -125,8 +125,6 @@ function playAudio(audioName) {
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
 
-    
-
     analyser.fftSize = 256;
 
     var bufferLength = analyser.frequencyBinCount;
@@ -137,7 +135,7 @@ function playAudio(audioName) {
     var WIDTH = canvas.width;
     var HEIGHT = canvas.height;
 
-    var barWidth = (WIDTH / bufferLength) * 2.5;
+    var barWidth = ((WIDTH - bufferLength)/ bufferLength);
     var barHeight;
     var x = 0;
 
@@ -167,6 +165,42 @@ function playAudio(audioName) {
 
     audio.play();
     renderFrame();
+
+}
+
+
+function initCanvas(){
+	var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+
+    var bufferLength = 128;
+
+    var dataArray = [200,190,195,200,200,200,200,150,160,165,177,177,177,180,177,177,133,157,167,177,166,166,166,166,166,166,166,166,166,156,166,146,166,156,166,166,186,166,126,166,175,175,175,175,175,175,175,175,175,175,200,200,200,190,195,200,200,200,200,200,177,177,177,177,177,170,172,177,177,170,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,165,164,166,166,166,175,175,175,177,178,175,175,175,175,175,200,200,200,200,200,200,190,195,111,200,177,147,177,176,127,177,177,177,177,177,166,166,166,166,166,166,166,166];
+    var WIDTH = canvas.width;
+    var HEIGHT = canvas.height;
+
+    var barWidth = ((WIDTH - bufferLength) / bufferLength) ;
+    var barHeight;
+    var x = 0;
+
+	WIDTH = canvas.width;
+
+	ctx.fillStyle = "#000";
+	ctx.fillRect(0, 0, WIDTH, HEIGHT);
+
+	for (var i = 0; i < bufferLength; i++) {
+		barHeight = (HEIGHT/255) * dataArray[i];
+
+		var r = 255 - (100* barHeight/150);
+		var g = 255 - (100* barHeight/150);
+		var b = 255 - (100* barHeight/150);
+
+		ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+		ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
+
+		x += barWidth + 1;
+	}
+
 
 }
 
@@ -352,3 +386,5 @@ var unmutedBtns = document.getElementsByClassName("button-mute");
 for (var i =0; i< unmutedBtns.length; i++){
 	unmutedBtns[i].style.display = "none";
 }
+
+initCanvas();
