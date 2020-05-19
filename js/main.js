@@ -165,7 +165,6 @@ function playAudio(audioName, canvasID) {
 
     audio.play();
     renderFrame();
-    initCanvas(canvas);
 
 }
 
@@ -186,7 +185,7 @@ function initCanvas(canvas){
 
 	WIDTH = canvas.width;
 
-	ctx.fillStyle = "#000";
+	ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
 	ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
 	for (var i = 0; i < bufferLength; i++) {
@@ -221,6 +220,7 @@ function stopAudio() {
 	audio.pause();
 	audio.setAttribute("src", "");
 	audio.load();
+	initAllCanvas();
 	document.getElementById("a-controls").style.display = "none";
 }
 
