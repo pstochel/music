@@ -161,6 +161,10 @@ function playAudio(audioName, canvasID) {
 
         x += barWidth * 2;
       }
+
+      if(dataArray.reduce((a, b) => a + b, 0) === 0){
+      	initAllCanvas();
+      }
     }
 
     audio.play();
