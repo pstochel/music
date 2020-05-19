@@ -164,7 +164,7 @@ function playAudio(audioName, canvasID) {
 
       if(audio.paused){
       	initCanvas(canvas);
-      	return;
+      	cancelAnimationFrame(renderFrame);
       }
     }
 
