@@ -114,8 +114,6 @@ function playAudio(audioName, canvasID) {
 		return
 	}
 	
-    audio.play();
-
     var context = new AudioContext(window.AudioContext || window.webkitAudioContext);
     var src = context.createMediaElementSource(audio);
     var analyser = context.createAnalyser();
