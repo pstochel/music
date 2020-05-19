@@ -125,7 +125,7 @@ function playAudio(audioName, canvasID) {
     var canvas = document.getElementById(canvasID);
     var ctx = canvas.getContext("2d");
 
-    analyser.fftSize = 256;
+    analyser.fftSize = 32;
 
     var bufferLength = analyser.frequencyBinCount;
     console.log(bufferLength);
@@ -135,7 +135,7 @@ function playAudio(audioName, canvasID) {
     var WIDTH = canvas.width;
     var HEIGHT = canvas.height;
 
-    var barWidth = ((WIDTH - bufferLength)/ bufferLength);
+	var barWidth = ((WIDTH) / (2*bufferLength)) ;
     var barHeight;
     var x = 0;
 
@@ -150,16 +150,16 @@ function playAudio(audioName, canvasID) {
       ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
       for (var i = 0; i < bufferLength; i++) {
-        barHeight = (HEIGHT/255) * dataArray[i];
+        barHeight = (HEIGHT/255/2) * dataArray[i];
         
         var r = 255 - (100* barHeight/150);
         var g = 255 - (100* barHeight/150);
         var b = 255 - (100* barHeight/150);
 
         ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-        ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
+		ctx.fillRect(x, (0.5 * HEIGHT) - barHeight, barWidth, 2*barHeight);
 
-        x += barWidth + 1;
+        x += barWidth * 2;
       }
     }
 
@@ -175,13 +175,13 @@ function initCanvas(){
 		var canvas = canvases[c];
 	    var ctx = canvas.getContext("2d");
 
-	    var bufferLength = 128;
+	    var bufferLength = 32;
 
-	    var dataArray = [200,190,195,200,200,200,200,150,160,165,177,177,177,180,177,177,133,157,167,177,166,166,166,166,166,166,166,166,166,156,166,146,166,156,166,166,186,166,126,166,175,175,175,175,175,175,175,175,175,175,200,200,200,190,195,200,200,200,200,200,177,177,177,177,177,170,172,177,177,170,166,166,166,166,166,166,166,166,166,166,166,166,166,166,166,165,164,166,166,166,175,175,175,177,178,175,175,175,175,175,200,200,200,200,200,200,190,195,111,200,177,147,177,176,127,177,177,177,177,177,166,166,166,166,166,166,166,166];
+	    var dataArray = [50, 60, 75, 123, 150, 177,199, 180, 190, 188,195, 200,190,195,200,200,200,200,150,160,165,177,177,177,180,177,133,120,105,99,80,50]
 	    var WIDTH = canvas.width;
 	    var HEIGHT = canvas.height;
 
-	    var barWidth = ((WIDTH - bufferLength) / bufferLength) ;
+	    var barWidth = ((WIDTH) / (2*bufferLength)) ;
 	    var barHeight;
 	    var x = 0;
 
@@ -191,16 +191,16 @@ function initCanvas(){
 		ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
 		for (var i = 0; i < bufferLength; i++) {
-			barHeight = (HEIGHT/255) * dataArray[i];
+			barHeight = (HEIGHT/255/2) * dataArray[i];
 
 			var r = 255 - (100* barHeight/150);
 			var g = 255 - (100* barHeight/150);
 			var b = 255 - (100* barHeight/150);
 
 			ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-			ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
+			ctx.fillRect(x, (0.5 * HEIGHT) - barHeight, barWidth, 2*barHeight);
 
-			x += barWidth + 1;
+			x += barWidth *2;
 		}
 	}
 }
