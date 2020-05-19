@@ -125,7 +125,7 @@ function playAudio(audioName, canvasID) {
     var canvas = document.getElementById(canvasID);
     var ctx = canvas.getContext("2d");
 
-    analyser.fftSize = 32;
+    analyser.fftSize = 64;
 
     var bufferLength = analyser.frequencyBinCount;
     console.log(bufferLength);
