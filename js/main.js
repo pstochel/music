@@ -165,43 +165,49 @@ function playAudio(audioName, canvasID) {
 
     audio.play();
     renderFrame();
+    initCanvas(canvas);
 
 }
 
+function initCanvas(canvas){
+	
+	var canvas = canvas;
+    var ctx = canvas.getContext("2d");
 
-function initCanvas(){
+    var bufferLength = 32;
+
+    var dataArray = [50, 60, 75, 123, 150, 177,199, 180, 190, 188,195, 200,190,195,200,200,200,200,150,160,165,177,177,177,180,177,133,120,105,99,80,50]
+    var WIDTH = canvas.width;
+    var HEIGHT = canvas.height;
+
+    var barWidth = ((WIDTH) / (2*bufferLength)) ;
+    var barHeight;
+    var x = 0;
+
+	WIDTH = canvas.width;
+
+	ctx.fillStyle = "#000";
+	ctx.fillRect(0, 0, WIDTH, HEIGHT);
+
+	for (var i = 0; i < bufferLength; i++) {
+		barHeight = (HEIGHT/255/2) * dataArray[i];
+
+		var r = 255 - (100* barHeight/150);
+		var g = 255 - (100* barHeight/150);
+		var b = 255 - (100* barHeight/150);
+
+		ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+		ctx.fillRect(x, (0.5 * HEIGHT) - barHeight, barWidth, 2*barHeight);
+
+		x += barWidth *2;
+	}
+	
+}
+
+function initAllCanvas(){
 	var canvases = document.getElementsByClassName("canvas");
 	for (var c=0; c< canvases.length; c++){
-		var canvas = canvases[c];
-	    var ctx = canvas.getContext("2d");
-
-	    var bufferLength = 32;
-
-	    var dataArray = [50, 60, 75, 123, 150, 177,199, 180, 190, 188,195, 200,190,195,200,200,200,200,150,160,165,177,177,177,180,177,133,120,105,99,80,50]
-	    var WIDTH = canvas.width;
-	    var HEIGHT = canvas.height;
-
-	    var barWidth = ((WIDTH) / (2*bufferLength)) ;
-	    var barHeight;
-	    var x = 0;
-
-		WIDTH = canvas.width;
-
-		ctx.fillStyle = "#000";
-		ctx.fillRect(0, 0, WIDTH, HEIGHT);
-
-		for (var i = 0; i < bufferLength; i++) {
-			barHeight = (HEIGHT/255/2) * dataArray[i];
-
-			var r = 255 - (100* barHeight/150);
-			var g = 255 - (100* barHeight/150);
-			var b = 255 - (100* barHeight/150);
-
-			ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-			ctx.fillRect(x, (0.5 * HEIGHT) - barHeight, barWidth, 2*barHeight);
-
-			x += barWidth *2;
-		}
+		initCanvas(canvases[c]);
 	}
 }
 
@@ -388,4 +394,4 @@ for (var i =0; i< unmutedBtns.length; i++){
 	unmutedBtns[i].style.display = "none";
 }
 
-initCanvas();
+initAllCanvas();
