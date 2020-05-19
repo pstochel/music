@@ -162,7 +162,7 @@ function playAudio(audioName, canvasID) {
         x += barWidth * 2;
       }
 
-      if(dataArray.reduce((a, b) => a + b, 0) === 0){
+      if(dataArray.reduce((a, b) => a + b, 0) === 0 && audio.getAttribute('src') !== ""){
       	initAllCanvas();
       }
     }
@@ -224,7 +224,6 @@ function stopAudio() {
 	audio.pause();
 	audio.setAttribute("src", "");
 	audio.load();
-	initAllCanvas();
 	document.getElementById("a-controls").style.display = "none";
 }
 
