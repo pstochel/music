@@ -140,7 +140,7 @@ function playAudio(audioName, canvasID) {
     var x = 0;
 
     function renderFrame() {
-      requestAnimationFrame(renderFrame);
+      renderId = requestAnimationFrame(renderFrame);
 		WIDTH = canvas.width;
       x = 0;
 
@@ -164,7 +164,7 @@ function playAudio(audioName, canvasID) {
 
       if(audio.paused){
       	initCanvas(canvas);
-      	cancelAnimationFrame(renderFrame);
+      	cancelAnimationFrame(renderId);
       }
     }
 
