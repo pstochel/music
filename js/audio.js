@@ -232,8 +232,10 @@ function playOscilator(){
 		x = 0;
 
 		analyser.getByteFrequencyData(dataArray);
+		ctx.fillStyle = "rgba(0, 0, 0)";
 
 		ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
+		ctx.fill();
 		ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
 		for (var i = 0; i < bufferLength; i++) {
@@ -243,7 +245,7 @@ function playOscilator(){
 		var g = 255 - (100* barHeight/150);
 		var b = 255 - (100* barHeight/150);
 
-		ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+		ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ", "100")";
 		ctx.fillRect(x, (0.5 * HEIGHT) - barHeight, barWidth, 2*barHeight);
 
 		x += barWidth * 2;
