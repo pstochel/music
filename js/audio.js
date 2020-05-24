@@ -69,6 +69,7 @@ function stop() {
 	audio.setAttribute("src", "");
 	audio.load();
 
+	initCanvas(canvasID);
 	canvasID = null;
 	cancelAnimationFrame(canvasAnimationID);
 	document.getElementById("controls").style.display = "none";
@@ -239,24 +240,25 @@ function playOscilator(){
 		ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
 		for (var i = 0; i < bufferLength; i++) {
-		barHeight = (HEIGHT/255/2) * dataArray[i];
+			barHeight = (HEIGHT/255/2) * dataArray[i];
 
-		var r = 255 - (100* barHeight/150);
-		var g = 255 - (100* barHeight/150);
-		var b = 255 - (100* barHeight/150);
+			var r = 255 - (100* barHeight/150);
+			var g = 255 - (100* barHeight/150);
+			var b = 255 - (100* barHeight/150);
 
-		ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-		ctx.fillRect(x, (0.5 * HEIGHT) - barHeight, barWidth, 2*barHeight);
+			ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+			ctx.fillRect(x, (0.5 * HEIGHT) - barHeight, barWidth, 2*barHeight);
 
-		x += barWidth * 2;
+			x += barWidth * 2;
+		}
+
+		if(audio.paused){
+			// initCanvas(canvas);
+			cancelAnimationFrame(renderId);
 		}
 
 		return renderId;
 
-		// if(audio.paused){
-		// 	initCanvas(canvas);
-		// 	cancelAnimationFrame(renderId);
-		// }
     }
 
     audio.play();
