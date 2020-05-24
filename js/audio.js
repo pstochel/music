@@ -265,7 +265,7 @@ function playOscilator(){
 			x += barWidth * 2;
 		}
 
-		if(audio.paused){
+		if(audio.paused || audio.getAttribute('src') === ""){
 			// initCanvas(canvas);
 			cancelAnimationFrame(renderId);
 		}
