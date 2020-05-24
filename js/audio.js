@@ -32,8 +32,8 @@ var canvasAnimationID = null;
 
 function play(videoName, audioName, canvas) {
 	isSourceEmpty = video.getAttribute('src') === "" && audio.getAttribute('src') === ""
-	isSameSource = video.getAttribute('src') ==="src", './video/' + videoName + '.mp4' 
-	|| audio.getAttribute('src') === "src", './sound/' + audioName + '.mp3'
+	isSameSource = video.getAttribute('src') === './video/' + videoName + '.mp4' 
+	|| audio.getAttribute('src') === './sound/' + audioName + '.mp3'
 	
 	if(!isSourceEmpty && !isSameSource) {
 		stop();
