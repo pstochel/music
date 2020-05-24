@@ -31,7 +31,9 @@ var canvasID = null;
 var canvasAnimationID = null;
 
 function play(videoName, audioName, canvas) {
-	stop();
+	video.pause();
+	audio.pause();
+	
 	if (video.getAttribute('src') === "" && audio.getAttribute('src') === "") {
 		video.setAttribute("src", './video/' + videoName + '.mp4')
 		video.load();
