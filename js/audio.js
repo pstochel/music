@@ -31,16 +31,23 @@ var canvasID = null;
 var canvasAnimationID = null;
 
 function play(videoName, audioName, canvas) {
-	isSourceEmpty = video.getAttribute('src') === "" && audio.getAttribute('src') === "";
-	isDifferentSource = !isSourceEmpty && (video.getAttribute('src') !== "src", './video/' + videoName + '.mp4' 
-		||  audio.getAttribute('src') !== "src", './sound/' + audioName + '.mp3');
-
+	isSourceEmpty = video.getAttribute('src') === "" && audio.getAttribute('src') === ""
+	isSameSource = video.getAttribute('src') ==="src", './video/' + videoName + '.mp4' 
+	|| audio.getAttribute('src') === "src", './sound/' + audioName + '.mp3'
 	
-	if (isSourceEmpty || isDifferentSource) {
-		// if the video is different, stop previous medie
-		if (isDifferentSource){
-			stop();
-		}	
+	if(!isSourceEmpty && !isSameSource) {
+		stop();
+		video.setAttribute("src", './video/' + videoName + '.mp4')
+		video.load();
+
+		audio.setAttribute("src", './sound/' + audioName + '.mp3')
+		audio.load();
+
+		document.getElementById("controls").style.display = "block";
+		playBtn.classList.add("paused");
+	}
+
+	if (video.getAttribute('src') === "" && audio.getAttribute('src') === "") {
 		video.setAttribute("src", './video/' + videoName + '.mp4')
 		video.load();
 
