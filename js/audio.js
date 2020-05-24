@@ -31,9 +31,7 @@ var canvasID = null;
 var canvasAnimationID = null;
 
 function play(videoName, audioName, canvas) {
-	video.pause();
-	audio.pause();
-	
+
 	if (video.getAttribute('src') === "" && audio.getAttribute('src') === "") {
 		video.setAttribute("src", './video/' + videoName + '.mp4')
 		video.load();
@@ -43,6 +41,11 @@ function play(videoName, audioName, canvas) {
 
 		document.getElementById("controls").style.display = "block";
 		playBtn.classList.add("paused");
+	}
+	// if the video is different, stop previous media
+	else if (video.getAttribute('src') !== "src", './video/' + videoName + '.mp4' 
+		||  audio.getAttribute('src') !== "src", './sound/' + audioName + '.mp3') {
+		stop();
 	}
 	
 	if (playBtn.classList.contains('paused') && !videoName && !audioName) {
