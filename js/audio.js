@@ -233,7 +233,7 @@ function playOscilator(){
 
 		analyser.getByteFrequencyData(dataArray);
 
-		ctx.fillStyle = "rgba(255, 255, 255, 0.01)";
+		ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
 		ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
 		for (var i = 0; i < bufferLength; i++) {
