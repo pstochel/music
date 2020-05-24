@@ -69,7 +69,6 @@ function stop() {
 	audio.setAttribute("src", "");
 	audio.load();
 
-	initCanvas(canvasID);
 	canvasID = null;
 	cancelAnimationFrame(canvasAnimationID);
 	document.getElementById("controls").style.display = "none";
