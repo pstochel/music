@@ -257,7 +257,7 @@ function playOscilator(){
 		// 	initCanvas(canvas);
 		// 	cancelAnimationFrame(renderId);
 		// }
-  //   }
+    }
 
     audio.play();
     canvasAnimationID = renderFrame();
