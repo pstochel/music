@@ -28,7 +28,7 @@ var fullScreenButton = document.getElementById("full-screen");
 
 // Oscillator
 var canvasID = null;
-
+var canvasAnimationID = null;
 
 function play(videoName, audioName, canvas) {
 	if (video.getAttribute('src') === "" && audio.getAttribute('src') === "") {
@@ -70,6 +70,7 @@ function stop() {
 	audio.load();
 
 	canvasID = null;
+	cancelAnimationFrame(canvasAnimationID);
 	document.getElementById("controls").style.display = "none";
 };
 
@@ -250,14 +251,16 @@ function playOscilator(){
 		x += barWidth * 2;
 		}
 
-		if(audio.paused or audio.stoped){
-			initCanvas(canvas);
-			cancelAnimationFrame(renderId);
-		}
-    }
+		return renderId;
+
+		// if(audio.paused){
+		// 	initCanvas(canvas);
+		// 	cancelAnimationFrame(renderId);
+		// }
+  //   }
 
     audio.play();
-    renderFrame();
+    canvasAnimationID = renderFrame();
 }
 
 function initCanvas(canvas){
