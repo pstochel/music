@@ -227,32 +227,32 @@ function playOscilator(){
     var x = 0;
 
     function renderFrame() {
-      renderId = requestAnimationFrame(renderFrame);
+		renderId = requestAnimationFrame(renderFrame);
 		WIDTH = canvas.width;
-      x = 0;
+		x = 0;
 
-      analyser.getByteFrequencyData(dataArray);
+		analyser.getByteFrequencyData(dataArray);
 
-      ctx.fillStyle = "rgba(255, 255, 255)";
-      ctx.fillRect(0, 0, WIDTH, HEIGHT);
+		ctx.fillStyle = "rgba(255, 255, 255, 0.01)";
+		ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
-      for (var i = 0; i < bufferLength; i++) {
-        barHeight = (HEIGHT/255/2) * dataArray[i];
-        
-        var r = 255 - (100* barHeight/150);
-        var g = 255 - (100* barHeight/150);
-        var b = 255 - (100* barHeight/150);
+		for (var i = 0; i < bufferLength; i++) {
+		barHeight = (HEIGHT/255/2) * dataArray[i];
 
-        ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+		var r = 255 - (100* barHeight/150);
+		var g = 255 - (100* barHeight/150);
+		var b = 255 - (100* barHeight/150);
+
+		ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
 		ctx.fillRect(x, (0.5 * HEIGHT) - barHeight, barWidth, 2*barHeight);
 
-        x += barWidth * 2;
-      }
+		x += barWidth * 2;
+		}
 
-      if(audio.paused){
-      	initCanvas(canvas);
-      	cancelAnimationFrame(renderId);
-      }
+		if(audio.paused){
+			initCanvas(canvas);
+			cancelAnimationFrame(renderId);
+		}
     }
 
     audio.play();
