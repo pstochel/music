@@ -250,7 +250,7 @@ function playOscilator(){
 		x += barWidth * 2;
 		}
 
-		if(audio.paused){
+		if(audio.paused or audio.stoped){
 			initCanvas(canvas);
 			cancelAnimationFrame(renderId);
 		}
@@ -269,6 +269,7 @@ function initCanvas(canvas){
 
     var dataArray = [50, 60, 75, 123, 150, 177,199, 180, 190, 188,195, 200,190,195,200,200,200,200,150,160,165,177,177,177,180,177,133,120,105,99,80,50]
     var WIDTH = canvas.width;
+    canvas.width = WIDTH;
     var HEIGHT = canvas.height;
 
     var barWidth = ((WIDTH) / (2*bufferLength)) ;
