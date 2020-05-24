@@ -48,7 +48,9 @@ function play(videoName, audioName, canvas) {
 	}
 	video.play();
 	
-	canvasID = canvas;
+	if (canvas) {
+		canvasID = canvas;
+	}
 	playOscilator();
 
 };
@@ -231,7 +233,7 @@ function playOscilator(){
 
       analyser.getByteFrequencyData(dataArray);
 
-      ctx.fillStyle = "#000";
+      ctx.fillStyle = "rgba(255, 255, 255, 0.001)";
       ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
       for (var i = 0; i < bufferLength; i++) {
