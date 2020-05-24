@@ -229,6 +229,7 @@ function playOscilator(){
     function renderFrame() {
 		renderId = requestAnimationFrame(renderFrame);
 		WIDTH = canvas.width;
+		canvas.width = WIDTH;
 		x = 0;
 
 		analyser.getByteFrequencyData(dataArray);
