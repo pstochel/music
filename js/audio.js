@@ -41,7 +41,11 @@ function play(videoName, audioName, canvas) {
 		document.getElementById("controls").style.display = "block";
 		playBtn.classList.add("paused");
 	}
-	else if (playBtn.classList.contains('paused') && !videoName && !audioName) {
+	else {
+		stop();
+	}
+	
+	if (playBtn.classList.contains('paused') && !videoName && !audioName) {
 		video.pause();
 		audio.pause();
 		return
@@ -56,7 +60,6 @@ function play(videoName, audioName, canvas) {
 };
 
 function pause() {
-	video.pause();
 	audio.pause();
 };
 
