@@ -35,7 +35,7 @@ function play(videoName, audioName, canvas) {
 	isSameSource = video.getAttribute('src') === './video/' + videoName + '.mp4' 
 	|| audio.getAttribute('src') === './sound/' + audioName + '.mp3'
 	
-	if(!isSourceEmpty && !isSameSource) {
+	if(videoName && audioName && !isSourceEmpty && !isSameSource) {
 		stop();
 		video.setAttribute("src", './video/' + videoName + '.mp4')
 		video.load();
