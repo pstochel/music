@@ -245,7 +245,7 @@ function playOscilator(){
 		var g = 255 - (100* barHeight/150);
 		var b = 255 - (100* barHeight/150);
 
-		ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ", "100")";
+		ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
 		ctx.fillRect(x, (0.5 * HEIGHT) - barHeight, barWidth, 2*barHeight);
 
 		x += barWidth * 2;
