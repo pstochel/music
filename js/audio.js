@@ -27,8 +27,8 @@ var fullScreenButton = document.getElementById("full-screen");
 
 
 // Oscillator
-var canvasID = null;
-var canvasAnimationID = null;
+var canvasID = "";
+var canvasAnimationID = "";
 
 function play(videoName, audioName, canvas) {
 	isSourceEmpty = video.getAttribute('src') === "" && audio.getAttribute('src') === ""
@@ -258,8 +258,9 @@ function playOscilator(){
 
 			x += barWidth * 2;
 		}
+		console.log("animating " + canvasID)
 
-		if(audio.paused || audio.getAttribute('src') === ""){
+		if(canvas.id !== canvasID || audio.paused || audio.getAttribute('src') === ""){
 			// initCanvas(canvas);
 			cancelAnimationFrame(renderId);
 		}
