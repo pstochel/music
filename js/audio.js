@@ -123,9 +123,14 @@ playBtn.addEventListener("click", function() {
 });
 
 audio.onended = function() {
-	initCanvas(canvasID);
+
+	initCanvas(document.getElementById(canvasID));
 	video.pause();
-	playBtn.classList.add("paused");
+	video.load();
+
+	playBtn.classList.toggle("paused");
+	seekBar.value = 0;
+	audio.currentTime = 0;
 
 }; 
 
