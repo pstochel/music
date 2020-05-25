@@ -122,7 +122,11 @@ playBtn.addEventListener("click", function() {
 	return false;
 });
 
+audio.onended = function() {
+    initCanvas(canvasID);
+	playBtn.classList.add("paused");
 
+}; 
 
 // //-------------------VIDEO
 // fullScreenButton.addEventListener("click", function() {
@@ -226,7 +230,6 @@ function playOscilator(){
     analyser.fftSize = 64;
 
     var bufferLength = analyser.frequencyBinCount;
-    console.log(bufferLength);
 
     var dataArray = new Uint8Array(bufferLength);
 
