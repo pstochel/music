@@ -33,16 +33,8 @@ var canvasAnimationID = null;
 function play(videoName, audioName, canvas) {
 	isSourceEmpty = video.getAttribute('src') === "" && audio.getAttribute('src') === ""
 	
-	if(videoName && audioName && !isSourceEmpty) {
+	if (!audio.paused) {
 		stop();
-		video.setAttribute("src", './video/' + videoName + '.mp4')
-		video.load();
-
-		audio.setAttribute("src", './sound/' + audioName + '.mp3')
-		audio.load();
-
-		document.getElementById("controls").style.display = "block";
-		playBtn.classList.add("paused");
 	}
 
 	if (video.getAttribute('src') === "" && audio.getAttribute('src') === "") {
@@ -84,7 +76,6 @@ function stop() {
 	audio.load();
 
 	canvasID = null;
-	cancelAnimationFrame(canvasAnimationID);
 	document.getElementById("controls").style.display = "none";
 };
 
@@ -101,8 +92,11 @@ fullScreenButton.addEventListener("click", function() {
     video.mozRequestFullScreen(); // Firefox
   } else if (video.webkitRequestFullscreen) {
     video.webkitRequestFullscreen(); // Chrome and Safari
+  } else if (video.msRequestFullscreen) {
+	video.msRequestFullscreen();
   }
 });
+
 
 seekBar.addEventListener("change", function() {
   // Calculate the new time
