@@ -260,7 +260,6 @@ function playOscilator(){
 
 			x += barWidth * 2;
 		}
-		console.log("animating " + canvasID)
 
 		if(canvas.id !== canvasID || audio.paused || audio.getAttribute('src') === ""){
 			// initCanvas(canvas);
