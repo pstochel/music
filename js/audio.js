@@ -32,12 +32,12 @@ var canvasAnimationID = "";
 
 function play(videoName, audioName, canvas) {
 	isSourceEmpty = video.getAttribute('src') === "" && audio.getAttribute('src') === ""
-	
+	isCanvasDifferent = canvas != canvasID;
 	if (!audio.paused) {
 		stop();
 	}
 
-	if (video.getAttribute('src') === "" && audio.getAttribute('src') === "") {
+	if (isSourceEmpty || isCanvasDifferent) {
 		video.setAttribute("src", './video/' + videoName + '.mp4')
 		video.load();
 
