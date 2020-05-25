@@ -123,7 +123,8 @@ playBtn.addEventListener("click", function() {
 });
 
 audio.onended = function() {
-    initCanvas(canvasID);
+	initCanvas(canvasID);
+	video.pause();
 	playBtn.classList.add("paused");
 
 }; 
