@@ -32,7 +32,7 @@ var canvasAnimationID = "";
 
 function play(videoName, audioName, canvas) {
 	isSourceEmpty = video.getAttribute('src') === "" && audio.getAttribute('src') === ""
-	isCanvasDifferent = canvas != canvasID;
+	isCanvasDifferent = canvas && canvas != canvasID;
 	if (!audio.paused) {
 		stop();
 	}
