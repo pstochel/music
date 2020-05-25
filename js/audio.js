@@ -124,13 +124,13 @@ playBtn.addEventListener("click", function() {
 
 audio.onended = function() {
 
-	initCanvas(document.getElementById(canvasID));
 	video.pause();
 	video.load();
 
 	playBtn.classList.toggle("paused");
 	seekBar.value = 0;
 	audio.currentTime = 0;
+	initCanvas(document.getElementById(canvasID));
 
 }; 
 
