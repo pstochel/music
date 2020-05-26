@@ -290,7 +290,7 @@ function initCanvas(canvas){
 
     var bufferLength = 32;
 
-    var dataArray = [12, 25, 20, 28, 19, 38, 52, 48, 73, 92, 78, 40, 35, 33, 35, 32, 30, 27, 25, 33, 25, 27, 38, 40, 36, 24, 12, 10, 9, 13, 8, 4]
+    var dataArray = [12, 50, 40, 56, 38, 76, 104, 96, 146, 184, 156, 80, 70, 66, 70, 64, 60, 54, 50, 66, 50, 52, 76, 80, 72, 48, 36, 30, 24, 18, 16, 8]
     var WIDTH = canvas.width;
     canvas.width = WIDTH;
     var HEIGHT = canvas.height;
