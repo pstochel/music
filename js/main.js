@@ -83,6 +83,20 @@ function openTab(evt, tabName) {
 
 }
 
+// Modal with poster
+
+var modal = document.getElementById("posterModal");
+var modalImg = document.getElementById("poster");
+
+function openPoster(imgSrc) {
+	modal.style.display = "block";
+	modalImg.src = './img/' + imgSrc;
+};
+
+function closePoster() {
+	modal.style.display = "none";
+};
+
 // INIT
 
 // Show all the pieces of work at init

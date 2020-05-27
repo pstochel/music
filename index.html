@@ -12,7 +12,9 @@
 			</video>
 		</div>
 		<audio id="audio" src=""></audio>
-
+		<div id="posterModal" class="modal" onclick="closePoster()">
+			<img class="modal-content" id="poster">
+		</div>
 		<header>
 			<div class="container">
 			</div>
@@ -57,16 +59,24 @@
 		<section class="tabContent" id="work_pieces">
 			<div class="row">
 				<div class="column work_piece">
-					<div onclick="play('vid1', 'rasta_fantasta', 'canvas1')">
+					<div class="playable" onclick="play('vid1', 'rasta_fantasta', 'canvas1')">
 						
 						<h3><span>#peer10.15''</span></h3>
 						<h3><span>reż. Jakub Skrzywanek</span></h3>
 						<h4><span>Akademia Sztuk Teatralnych im. Stanisława Wyspiańskiego w Krakowie, Teatr BARAKAH</span></h4>
 						<canvas id="canvas1" class="canvas"></canvas>
-						<h5>
-							<span lang="en">mar 2015</span>
-							<span lang="pl">marzec 2015</span>
-						</h5>
+					</div>
+					<h5>
+						<span lang="en">mar 2015</span>
+						<span lang="pl">marzec 2015</span>
+					</h5>
+					<div class="extra">
+							<ul>
+								<li>Video</li>
+								<li>Desc</li>
+								<li>Pics</li>
+								<li onclick="openPoster('fanatyk.png')">Poster</li>
+							</ul>
 					</div>
 			
 
@@ -77,13 +87,21 @@
 						<h3><span>Sony Design</span></h3>
 						<h3><span>"Affinity in Autonomy" Teaser</span></h3>
 						<canvas id='canvas2' class="canvas"></canvas>
-						<h5>
-							<span lang="en">mar 2015</span>
-							<span lang="pl">marzec 2015</span>
-						</h5>
+						
+					</div>
+					<h5>
+						<span lang="en">mar 2015</span>
+						<span lang="pl">marzec 2015</span>
+					</h5>
+					<div class="extra">
+							<ul>
+								<li>Video</li>
+								<li>Desc</li>
+								<li>Pics</li>
+								<li>Poster</li>
+							</ul>
 					</div>
 				
-
 				</div>
 				<div class="column work_piece private">
 					<div>
