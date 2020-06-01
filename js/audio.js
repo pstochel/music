@@ -275,7 +275,7 @@ function playOscilator(){
 		if(canvas.id !== canvasID || audio.paused || audio.getAttribute('src') === ""){
 			// initCanvas(canvas);
 			cancelAnimationFrame(renderId);
-			src.disconnect()
+			context.disconnect()
 		}
 
 		return renderId;
