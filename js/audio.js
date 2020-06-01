@@ -275,6 +275,7 @@ function playOscilator(){
 		if(canvas.id !== canvasID || audio.paused || audio.getAttribute('src') === ""){
 			// initCanvas(canvas);
 			cancelAnimationFrame(renderId);
+			src.disconnect()
 		}
 
 		return renderId;
@@ -363,13 +364,13 @@ function mute(ismute) {
 	else if (audio.muted == true) {
 		audio.muted = false;
 	} 
-	if (video.muted == false) {
-		video.muted = true;
+	// if (video.muted == false) {
+	// 	video.muted = true;
 
-	} 
-	else if (video.muted == true) {
-		video.muted = false;
-	}
+	// } 
+	// else if (video.muted == true) {
+	// 	video.muted = false;
+	// }
 	changeMute(ismute)
 }
 
