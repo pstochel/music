@@ -29,7 +29,7 @@ function play(videoName, audioName, canvas) {
 		audio.pause();
 		return
 	}
-	if (!audio.paused) {
+	if (!audio.paused && isCanvasDifferent) {
 		stop();
 	}
 
