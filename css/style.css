@@ -28,12 +28,36 @@ body.PL :lang(en) {
   display: none;
 }
 
+@media only screen and (min-width: 480px){
+	nav {
+		margin-left: 70px;
+		margin-right: 70px;
+		font-size: 20px;
+	}
 
-nav {
-	margin-left: 70px;
-	margin-right: 70px;
-	padding-top: 70px;
-	font-size: 20px;
+	#work_pieces {
+		margin: 80px;
+	}
+}
+
+@media only screen and (max-width: 480px){
+
+	#work_pieces {
+		margin: 5px;
+	}
+}
+
+@media only screen and (min-height: 480px){
+	nav {
+		padding-top: 70px;
+	}
+}
+
+@media only screen and (max-height: 480px){
+
+	nav {
+		padding-top: 5px;
+	}
 }
 
 nav ul {
@@ -87,10 +111,6 @@ nav li a:hover {
   border-bottom: 1px solid #bbb;
 }
 
-#work_pieces {
-	margin: 80px;
-}
-
 #work_pieces .row {
   display: -ms-flexbox; /* IE10 */
   display: flex;
@@ -115,8 +135,8 @@ nav li a:hover {
 }
 
 /* Responsive layout - makes a two column-layout instead of four columns */
-@media screen and (max-width: 800px) {
-#work_pieces  .column {
+@media (max-width: 800px) {
+#work_pieces .column {
     -ms-flex: 50%;
     flex: 50%;
     max-width: 50%;
@@ -124,8 +144,8 @@ nav li a:hover {
 }
 
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-#work_pieces  .column {
+@media (max-width: 600px) {
+#work_pieces .column {
     -ms-flex: 100%;
     flex: 100%;
     max-width: 100%;
@@ -299,8 +319,30 @@ h5 {
   max-width: 700px;*/
 }
 
+.icon-bars {
+	text-align: right;
+	padding-right: 5px;
+	padding-top: 5px;
+}
+
 @media only screen and (max-width: 700px){
   .modal-content {
     width: 100%;
   }
+}
+
+@media only screen and (max-width: 480px){
+	#upperNav{
+		display: none;
+	}
+}
+
+@media only screen and (min-width: 480px){
+	.icon-bars{
+		display: none;
+	}
+
+	#upperNav{
+		display: flex;
+	}
 }

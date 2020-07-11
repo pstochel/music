@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=devise-width">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
 		<title>KTT</title>
 		<link rel="stylesheet" href="./css/style.css">
 	</head>
@@ -16,15 +16,17 @@
 			<img class="modal-content" id="poster">
 		</div>
 		<header>
-			<div class="container">
-			</div>
+
+	<!-- 		<div href="javascript:void(0);" class="icon-bars" onclick="showNav()">
+			    <img src="./img/bars.png">
+			</div> -->
 			<nav>
-				<div class="header_up">
+				<div id="upperNav" class="header_up">
 					<div class="header_nav">
 						<ul>
-							<li><a onclick="openTab(event, 'work_pieces')" class="tab active">Kamil Tuszyński</a></li>
-							<li><a onclick="openTab(event, 'bio')" class="tab">Bio</a></li>
-							<li><a onclick="openTab(event, 'info')" class="tab">Info</a></li>
+							<li><a onclick="stop(); openTab(event, 'work_pieces')" class="tab active">Kamil Tuszyński</a></li>
+							<li><a onclick="stop(); openTab(event, 'bio')" class="tab">Bio</a></li>
+							<li><a onclick="stop(); openTab(event, 'info')" class="tab">Info</a></li>
 						</ul>
 					</div>
 					<div class="header_lang">
@@ -34,6 +36,7 @@
 						</ul>
 					</div>
 				</div>
+				
 				<div class="header_bottom">
 					<div class="work_filters">
 						<ul>

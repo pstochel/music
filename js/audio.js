@@ -24,15 +24,19 @@ function play(videoName, audioName, canvas) {
 	isSourceEmpty = video.getAttribute('src') === "" && audio.getAttribute('src') === ""
 	isCanvasDifferent = canvas && canvas != canvasID;
 	
+	// Pause video and audio
 	if (playBtn.classList.contains('paused') && !videoName && !audioName) {
 		video.pause();
 		audio.pause();
 		return
 	}
+
+	// If the audio is playing and clicked play on different audio then stop
 	if (!audio.paused && isCanvasDifferent) {
 		stop();
 	}
 
+	// If no src of audio & video or src is changing
 	if (isSourceEmpty || isCanvasDifferent) {
 		video.setAttribute("src", './video/' + videoName + '.mp4')
 		video.load();
@@ -69,8 +73,6 @@ function stop() {
 
 	canvasID = null;
 	document.getElementById("controls").style.display = "none";
-	
-	
 };
 
 // Event listener for the volume bar
@@ -123,7 +125,6 @@ audio.onended = function() {
 	seekBar.value = 0;
 	audio.currentTime = 0;
 	initCanvas(document.getElementById(canvasID));
-
 }; 
 
 
@@ -190,7 +191,6 @@ function playOscilator(){
 }
 
 function initCanvas(canvas){
-	
 	var canvas = canvas;
     var ctx = canvas.getContext("2d");
 
@@ -252,7 +252,7 @@ function mute(ismute) {
 		audio.muted = false;
 	} 
 
-	changeMute(ismute)
+	changeMute(ismute);
 }
 
 var unmutedBtns = document.getElementsByClassName("button-mute");
