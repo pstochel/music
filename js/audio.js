@@ -1,4 +1,12 @@
 // Get the video
+document.addEventListener('DOMContentLoaded', prefetchVideo);
+
+function prefetchVideo() {
+	if (window.screen.width > 480) {
+		video.src = video.getAttribute('data-src');
+	}
+}
+
 var video = document.getElementById("myVideo");
 
 // Get the buttons
@@ -12,7 +20,6 @@ var volumeBar = document.getElementById("volume-bar");
 var seekBar = document.getElementById("seek-bar");
 var playBtn = document.getElementById("play");
 var fullScreenButton = document.getElementById("full-screen");
-
 
 // Oscillator
 var canvasID = "";
