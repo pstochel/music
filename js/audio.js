@@ -74,7 +74,7 @@ function pause() {
 
 function stop() {
 	video.pause();
-	video.setAttribute("src", "");
+	// video.setAttribute("src", "");
 	video.load();
 
 	audio.pause();
