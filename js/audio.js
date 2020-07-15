@@ -28,11 +28,12 @@ var context = '';
 var analyser = '';
 
 function play(videoName, audioName, canvas) {
-	isSourceEmpty = video.getAttribute('src') === "" && audio.getAttribute('src') === ""
+	isSourceEmpty = audio.getAttribute('src') === ""
+	isVideoSourceEmpty = video.getAttribute('src') === ""
 	isCanvasDifferent = canvas && canvas != canvasID;
 	
 	// Pause video and audio
-	if (playBtn.classList.contains('paused') && !videoName && !audioName) {
+	if (playBtn.classList.contains('paused') && !audioName) {
 		video.pause();
 		audio.pause();
 		return
@@ -45,8 +46,8 @@ function play(videoName, audioName, canvas) {
 
 	// If no src of audio & video or src is changing
 	if (isSourceEmpty || isCanvasDifferent) {
-		video.setAttribute("src", './video/' + videoName + '.mp4')
-		video.load();
+		// video.setAttribute("src", './video/' + videoName + '.mp4')
+		// video.load();
 
 		audio.setAttribute("src", './sound/' + audioName + '.mp3')
 		audio.load();
@@ -55,8 +56,10 @@ function play(videoName, audioName, canvas) {
 		playBtn.classList.add("paused");
 	}
 	
-	
-	video.play();
+	if(!isVideoSourceEmpty){
+		video.load();
+		video.play();
+	}
 	
 	if (canvas) {
 		canvasID = canvas;
